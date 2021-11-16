@@ -1,4 +1,6 @@
 import React from 'react';
+import Search from './Search'
+import './header.scss';
 
 const Header = () => {
   const showSidebar = () => {
@@ -6,7 +8,7 @@ const Header = () => {
   };
 
   return (
-    <>
+    <header className='header'>
       <nav className="navbar-line">
         <div className="nav-block">
           <div className="header__burger" onClick={showSidebar}>
@@ -30,10 +32,8 @@ const Header = () => {
       </div>
       <div className="menu-block">
         <form method="post" action="/search" className="search-form">
-          <input type="text" name="search" id="search" className="search" autoComplete="off" />
-          <button type="submit" className="search-button">
-            <i className="icon-search"></i>
-          </button>
+          <Search />
+         
         </form>
         <a href="/login" className="btn-border order-lg-3">
           <div className="btn-comein">Order?</div>
@@ -72,7 +72,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-    </>
+    </header>
   );
 };
 
