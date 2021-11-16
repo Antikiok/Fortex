@@ -78,7 +78,7 @@
     font-size: 15px;
     border-radius: 3px;
     &__input {
-        width: 170px;
+        width: 210px;
         height: 25px;
         color: #b2b2b2;
         background-color: #282828;
@@ -122,5 +122,41 @@
         font-weight: 600;
         font-size: 12px;
         line-height: 15px;
+    }
+}
+.categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    &__btn {
+        background-color: transparent;
+        color: #fff;
+        font-size: 20px;
+    }
+    &__list {
+        display: flex;
+        flex-direction: row;
+        font-weight: 600;
+        color: #fff;
+        font-size: 12px;
+        line-height: 12px;
+    }
+    &__item {
+        margin: 8px 7px;
+        padding-bottom: 8px;
+        &_active {
+            position: relative;
+            &:after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 0;
+                width: 42px;
+                height: 2px;
+                background: linear-gradient(45deg, #f65130, #e9941a);
+            }
+        }
     }
 }

@@ -8,8 +8,10 @@ import './header.scss';
 const testArr = ['Автомобили', 'Недвижемость', 'Победители']
 
 const Header = ({ categoriesArray = testArr }) => {
-  console.log('s');
   const handleBurgerClick = () => console.log('burger clicked');
+
+  const handleClickGoPrev = () => console.log('go prev');
+  const handleClickGoNext = () => console.log('go next');
   return (
     <header className='header'>
       <div className='header__top-line'>
@@ -34,16 +36,16 @@ const Header = ({ categoriesArray = testArr }) => {
           <Cart />
         </div>
         <div className='categories'>
-          <button className="categories__btn">←</button>
+          <button className="categories__btn" onClick={handleClickGoPrev}>←</button>
           <ul className='categories__list'>
             {/* change index to item ID with valid data */}
-            {categoriesArray.map((item, index) => <li key={index} className="categories__item">{item}</li>)}
+            {categoriesArray.map((item, index) => <li key={index} className={`categories__item ${index === 0 ? 'categories__item_active' : ''}`}>{item}</li>)}
           </ul>
-          <button className="categories__btn">→</button>
+          <button className="categories__btn" onClick={handleClickGoNext}>→</button>
         </div>
       </div>
 
-    </header>
+    </header >
   );
 };
 
