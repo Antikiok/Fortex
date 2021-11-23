@@ -1,78 +1,51 @@
 import React from 'react';
+import { BsFacebook } from 'react-icons/Bs';
+import { AiOutlineGoogle, AiOutlineYoutube } from 'react-icons/Ai';
+import Search from './Search'
+import Cart from './Cart'
+import './header.scss';
 
-const Header = () => {
-  const showSidebar = () => {
-    console.log('sidebar is showed');
-  };
+const testArr = ['Автомобили', 'Недвижемость', 'Победители']
 
+const Header = ({ categoriesArray = testArr }) => {
+  const handleBurgerClick = () => console.log('burger clicked');
+
+  const handleClickGoPrev = () => console.log('go prev');
+  const handleClickGoNext = () => console.log('go next');
   return (
-    <>
-      <nav className="navbar-line">
-        <div className="nav-block">
-          <div className="header__burger" onClick={showSidebar}>
-            <span></span>
-          </div>
-          <a className="navbar-brand" href="{{ url('/'.app()->getLocale()) }}">
-            <img src="/images/logo.png" alt="logo" />
+    <header className='header'>
+      <div className='header__top-line'>
+        <div className="header__top-line_wrapper">
+          <div className="burger" onClick={handleBurgerClick}><span></span></div>
+          <a href="#" className="logo">FORTEX</a>
+        </div>
+        <div className="header__socials">
+          <a href="#"><BsFacebook />
+          </a>
+          <a href="#">
+            <AiOutlineGoogle />
+          </a>
+          <a href="#">
+            <AiOutlineYoutube />
           </a>
         </div>
-      </nav>
-      <div className="nav-social">
-        <a className="" href="#">
-          <i className="">VK </i>
-        </a>
-        <a className="" href="#">
-          <i className="">VK </i>
-        </a>
-        <a className="" href="#">
-          <i className="">VK </i>
-        </a>
       </div>
       <div className="menu-block">
-        <form method="post" action="/search" className="search-form">
-          <input type="text" name="search" id="search" className="search" autoComplete="off" />
-          <button type="submit" className="search-button">
-            <i className="icon-search"></i>
-          </button>
-        </form>
-        <a href="/login" className="btn-border order-lg-3">
-          <div className="btn-comein">Order?</div>
-        </a>
-
-        <a href="/cart" className="cart-block order-lg-3">
-          <div className="cart">
-            <i className="icon-cart"></i>
-            <span className="text-600 cart-amount" style={{ marginLeft: '4px' }}></span>
-          </div>
-        </a>
-
-        <div className="order-lg-1 order-xs-2 col-xs-12 menu-block">
-          <div className="arrow-left-arrow">
-            <i className="icon-arrow-prev"></i>
-          </div>
-          <div className="menu-mobile overflow-y">
-            <li className="nav-item">
-              <a href="{{ route('aboutUs') }}" className="menu-active">
-                about?
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="menu-active">
-                menu Item text
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="{{ route('winners') }}" className="menu-active">
-                winners?
-              </a>
-            </li>
-          </div>
-          <div className="arrow-right-arrow">
-            <i className="icon-arrow-next"></i>
-          </div>
+        <div className="line-wrapper">
+          <Search />
+          <Cart />
+        </div>
+        <div className='categories'>
+          <button className="categories__btn" onClick={handleClickGoPrev}>←</button>
+          <ul className='categories__list'>
+            {/* change index to item ID with valid data */}
+            {categoriesArray.map((item, index) => <li key={index} className={`categories__item ${index === 0 ? 'categories__item_active' : ''}`}>{item}</li>)}
+          </ul>
+          <button className="categories__btn" onClick={handleClickGoNext}>→</button>
         </div>
       </div>
-    </>
+
+    </header >
   );
 };
 
